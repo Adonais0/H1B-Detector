@@ -12,7 +12,6 @@ import { ActivatedRoute } from '@angular/router';
 export class JobDetailPage implements OnInit {
   public position: Position;
   id: String;
-  private job: String;
   constructor(
     private appService: AppService,
     private loadingCtrl: LoadingController,
