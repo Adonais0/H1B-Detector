@@ -1,6 +1,6 @@
 # Final Project for SI664, UMSI, 2018 Fall
 ## H1B Detector
-
+H1B-Detector
 ## Purpose
 
 This application allows users to easily search for H1B sponsoring companies in the US by using the dataset from the U.S. Department of Labor. The detailed description of the dataset can be found here: https://www.foreignlaborcert.doleta.gov/pdf/PerformanceData/2017/H-1B_FY17_Record_Layout.pdf. Each row of the dataset represents an application case. And along with the case number, the employer information is also included as well as general information about the position. (company name, employer address, job title, salary, etc).
@@ -40,6 +40,8 @@ recent year. (see detail in sql data model file)
     - `ionic cordova plugin add cordova-plugin-local-notification`
     - `npm install --save @ionic-native/local-notifications`
   - `ionic serve`
+
+## Postgres SQL
 
 - Mac in terminal start postgres server: `pg_ctl -D /usr/local/var/postgres start`
 - Wait for the terminal to show `server started`
