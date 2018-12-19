@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="welcome-card">
+      <ion-img src="/assets/shapes.svg"></ion-img>
+      <ion-card-header>
+        <ion-card-subtitle>Get Started</ion-card-subtitle>
+        <ion-card-title>Welcome to H1Bee</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Search for any jobs you want to apply</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-list lines="none">
+      <ion-item>
+        <ion-input
+        [(ngModel)]="query"
+          class="input"
+          type="search"
+          placeholder="Search..."
+        ></ion-input>
+        <ion-button shape="round" slot="end" (click)="search()">
+          <ion-icon name="search"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+</ion-content>
