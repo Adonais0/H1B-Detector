@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
+from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
 from .models import *
@@ -8,6 +9,10 @@ from .serializers import *
 # Authentication Protect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from rest_framework.authtoken.models import Token
+from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
+from rest_framework.decorators import api_view
+from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
 class CityList(APIView):
@@ -63,3 +68,20 @@ class JobDetailView(APIView):
         pass
 
 # Authentication
+class UserList(generics.ListAPIView):
+    def get(self, request):
+        user = Users.objects.all()
+        serializer = UserSerializer(user, many=True)
+        return Response(serializer.data)
+
+class CurrentUser(generics.RetrieveAPIView):
+    def get(self, request):
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data)
+
+@csrf_exempt
+@api_view(['POST'])
+def check_token(request, format=None):
+    # Test if token exist in database
+     token = Token.objects.filter(key = request.data['token']).exists()
+     return JsonResponse({"status": token})

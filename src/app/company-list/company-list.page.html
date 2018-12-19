@@ -1,9 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>company-list</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> {{ companyTitle }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-list *ngIf="companies">
+    <ion-item *ngFor="let company of companies" (click)="toDetail(company.id)">
+        <b>{{ company.companyName }}</b>
+        <p slot="end">{{ company.companyLocation }}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>

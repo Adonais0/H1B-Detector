@@ -1,6 +1,8 @@
 from rest_framework.urlpatterns import format_suffix_patterns
 from django.conf.urls import url
 from . import views
+from .views import check_token
+from django.conf.urls import include
 
 urlpatterns = [
     url(r'^city/', views.CityList.as_view()),
@@ -11,6 +13,13 @@ urlpatterns = [
 
     url(r'^company/(?P<pk>\d+)/$', views.CompanyDetailView.as_view()),
     url(r'^job/(?P<pk>[\w\-]+)/$', views.JobDetailView.as_view()),
+
+    url(r'^user/', views.UserList.as_view()),
+
+    url(r'^login/', include('rest_social_auth.urls_jwt')),
+    url(r'^login/', include('rest_social_auth.urls_token')),
+    url(r'^login/', include('rest_social_auth.urls_session')),
+    url(r'check/', check_token),
 ]
 
 # urlpatterns = format_suffix_patterns(urlpatterns)

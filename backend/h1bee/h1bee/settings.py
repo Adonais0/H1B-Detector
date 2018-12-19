@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'rest.apps.RestConfig',
+    'rest_social_auth',
+    'oauth2_provider',
     'social_django',
     'rest_framework_social_oauth2',
-    'oauth2_provider'
 ]
 
 MIDDLEWARE = [
@@ -154,7 +156,7 @@ AUTHENTICATION_BACKENDS = (
     # 'social_core.backends.open_id.OpenIdAuth',
     # 'social_core.backends.google.GoogleOpenId',
     'rest_framework_social_oauth2.backends.DjangoOAuth2',
-    # 'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
     # 'social_core.backends.google.GoogleOAuth',
     # 'social_core.backends.twitter.TwitterOAuth',
     # 'social_core.backends.yahoo.YahooOpenId',
@@ -164,7 +166,17 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '218606464263-ah2grqe3bdpvp30i1trhgch5jue78d2g.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'ppKAlmbzDLHOtCyIex1HRxZr'
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SOCIAL_AUTH_RAISE_EXCEPTIONS = True
+# Define SOCIAL_AUTH_FACEBOOK_SCOPE to get extra permissions from facebook. Email is not sent by default, to get it, you must request the email permission:
+SOCIAL_AUTH_GOOGLE_SCOPE = ['email']
+SOCIAL_AUTH_GOOGLE_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id, name, email'
+}
+
+CSRF_COOKIE_SECURE = True
+CORS_ORIGIN_ALLOW_ALL = True
 
 LOGIN_URL = '/auth/login/google-oauth2/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+# DRFSO2_PROPRIETARY_BACKEND_NAME = 'h1bee'

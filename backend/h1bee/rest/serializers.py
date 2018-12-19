@@ -76,3 +76,9 @@ class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
         fields = ('company_id', 'company', 'street_address','location', 'company_job')
+
+#=================AUTHENTICATION===============#
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Users
+        fields = ('id', 'user_name')

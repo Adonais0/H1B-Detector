@@ -1,9 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>job-list</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="jobTitle">{{ jobTitle }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-list *ngIf="positions">
+    <ion-item *ngFor="let position of positions" (click)="toDetail(position.id)">
+      <b>{{ position.positionCategory}}</b>
+      <i>{{ position.positionTitle}}</i>
+      <p>Salary: {{ position.positionSalary }}</p>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-tab1',
@@ -8,10 +9,19 @@ import { Router } from '@angular/router';
 })
 export class Tab1Page {
   query: String = '';
+  searchType = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private appService: AppService) {}
 
-  search(query) {
-    this.router.navigate(['company-list']);
+  search() {
+    if (this.searchType === 'job') {
+      this.appService.searchJob(this.query.toUpperCase());
+      console.log(this.query);
+      this.router.navigate(['job-list', this.query]);
+    } else if (this.searchType === 'company') {
+      this.appService.searchCompany(this.query.toUpperCase());
+      this.router.navigate(['company-list', this.query]);
+    }
   }
 }

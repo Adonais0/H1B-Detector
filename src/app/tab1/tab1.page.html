@@ -17,6 +17,14 @@
         <p>Search for any jobs you want to apply</p>
       </ion-card-content>
     </ion-card>
+    <ion-segment [(ngModel)]="searchType" color="dark">
+      <ion-segment-button value="company">
+        <ion-label>Company</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="job">
+        <ion-label>Jobs</ion-label>
+      </ion-segment-button>
+    </ion-segment>
     <ion-list lines="none">
       <ion-item>
         <ion-input

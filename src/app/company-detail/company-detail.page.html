@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="currentCompany">{{ currentCompany.companyName }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding *ngIf="currentCompany">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ currentCompany.companyName }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>{{ currentCompany.companyLocation }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-item *ngFor="let position of currentCompany.companyPositions">
+      <b>{{ position.positionTitle }}</b>
+    </ion-item>
+  </ion-list>
+</ion-content>

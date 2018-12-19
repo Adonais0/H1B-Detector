@@ -14,6 +14,8 @@ import {
    GoogleLoginProvider,
 } from 'angular-6-social-login';
 import { AuthAPIService} from './auth.service';
+import { AppService} from './app.service';
+
 import { HttpClientModule } from '@angular/common/http';
 
 export function getAuthServiceConfigs() {
@@ -39,6 +41,7 @@ export function getAuthServiceConfigs() {
     SocialLoginModule
   ],
   providers: [
+    AppService,
     AuthAPIService, {
     provide: AuthServiceConfig,
     useFactory: getAuthServiceConfigs

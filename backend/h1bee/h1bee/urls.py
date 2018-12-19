@@ -25,8 +25,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('rest.urls')),
     url(r'^auth/', include('rest_framework_social_oauth2.urls')),
-    # url(r'^login/', SocialLogInView.as_view(), name='login'),
-    # url(r'^logout/', SocialLogOutView.as_view(), name='logout'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -143,3 +143,14 @@ class State(models.Model):
 
     def __str__(self):
         return self.state
+
+class Users(models.Model):
+    id = models.AutoField(primary_key=True)
+    user_name = models.CharField(max_length = 10, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'user'
+
+    def __str__(self):
+        return self.user_name
