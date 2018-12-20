@@ -54,8 +54,8 @@ recent year. (see detail in sql data model file)
 - Run `$ ionic serve` to start front end
 
 ### pgAdmin
-- (pgAdmin)[https://www.pgadmin.org/] is a GUI interface of postgres
-- (Download from here)[https://www.pgadmin.org/download/]
+- [pgAdmin](https://www.pgadmin.org/) is a GUI interface of postgres
+- [Download from here](https://www.pgadmin.org/download/)
 - After installation, launch the pgAdmin application
 - Double click `PostgreSQL` under the `Servers` item
 - Enter password for your mac user in the pop up window
