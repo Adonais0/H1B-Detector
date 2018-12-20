@@ -1,15 +1,14 @@
-# Final Project for SI664, UMSI, 2018 Fall
-## H1B Detector
-H1B-Detector
-## Purpose
+# Final Project for SI664, UMSI, 2018 Fall H1B Detector
+
+# Introduction
 
 This application allows users to easily search for H1B sponsoring companies in the US by using the dataset from the U.S. Department of Labor. The detailed description of the dataset can be found here: https://www.foreignlaborcert.doleta.gov/pdf/PerformanceData/2017/H-1B_FY17_Record_Layout.pdf. Each row of the dataset represents an application case. And along with the case number, the employer information is also included as well as general information about the position. (company name, employer address, job title, salary, etc).
 
-## Data set
+### Data set
 
 The dataset is downloaded from [United States Department of Labor](https://www.foreignlaborcert.doleta.gov/performancedata.cfm)
 
-## Data model
+### Data model
 
 There are mainly two types of information I want to show to the users in this application:
 company information, and job information. The company detail page contains information about
@@ -20,39 +19,51 @@ The job detail page shows information about the average salary, companies that s
 this job position, job title and job category, work locations, and application numbers in the most
 recent year. (see detail in sql data model file)
 
-## Package Dependencies
+![model image](./model.png)
 
-- Ionic 3
+# Project Setup
+
+### Package Dependencies
+
+- Ionic 4
 - Angular 7
-- Django 1.11
+- Django 2.1.3
 - Python 3.7
-
-- Back-end
-  -  `cd backend`
-  -  set up new virtual environment `venv`
-  -  `cd h1bee`
-  -  in the virtual environment `pip3 install -r requirements.txt`
-  -  `python3 manage.py runserver`
-
-- Front-end
-  - Run `npm install`
-  - Install Ionic Native LocalNotifications
-    - `ionic cordova plugin add cordova-plugin-local-notification`
-    - `npm install --save @ionic-native/local-notifications`
-  - `ionic serve`
+- PostgreSQL 10.0
 
 ## Postgres SQL
-
-- Mac in terminal start postgres server: `pg_ctl -D /usr/local/var/postgres start`
+- **Install postgreSQL**: `$ brew install postgresql`
+- Mac in terminal **start postgres server**: `$ pg_ctl -D /usr/local/var/postgres start`
 - Wait for the terminal to show `server started`
-- Create a table named `h1bee`
-- navigate to sqlfile.sql run `$ psql h1bee < sqlfile.sql`
+- Create a table named `$ createdb h1bee`
+- In the **project root directory** (h1bee), run `pg_restore -d h1bee database` (database is the dump file name)
+- If no error appear, the dump file is restored in the new `h1bee` database
+- In order to browse the database better, you need to install pgAdmin
+- If you want to **Connect to the database** in terminal `psql`
 
-# Authentication
+### Backend
+-  `cd backend`
+-  set up new virtual environment `venv`
+-  in the virtual environment `pip3 install -r requirements.txt`
+-  `cd h1bee`
+-  `python3 manage.py runserver`
 
-## Front end
+### Frontend
+- Run `npm install`
+- Install any packages if the `ionic server` raise package error
+- `ionic serve`
 
-- Angular 6 social login
-```
-$ npm install angular-6-social-login --save
-```
+### pgAdmin
+- (pgAdmin)[https://www.pgadmin.org/] is a GUI interface of postgres
+- (Download from here)[https://www.pgadmin.org/download/]
+- After installation, launch the pgAdmin application
+- Double click `PostgreSQL` under the `Servers` item
+- Enter password for your mac user in the pop up window
+- After connecting with the server:
+  - Click the expand icon [+] before `PostgreSQL`
+  - Expand `Databases`
+  - Expand `h1bee`
+  - Expand `Schemas`
+  - Expand `Public`
+  - Expand `Tables`
+- Then you can see all the database tables
