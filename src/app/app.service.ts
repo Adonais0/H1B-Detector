@@ -130,10 +130,23 @@ public parseJob(job: any) {
   return result;
 }
 
+public parseJobDetail(job: any) {
+  const result: Position = {
+    id : job.position.job_id,
+    positionTitle : job.position.job,
+    positionSalary: 80000,
+    positionCategory: job.position.job_category.job_category,
+    positionCompanies: job.companies,
+    fav: false,
+    applied: false,
+  };
+  return result;
+}
+
 public getJobDetail(id: Number) {
   this.httpClient.get<any>(BACKEND_URL + 'job/' + id + '/').subscribe(
     (fetchedData) => {
-      this.fetchedJobDetail = this.parseJob(fetchedData);
+      this.fetchedJobDetail = this.parseJobDetail(fetchedData);
       this.jobDetail = this.fetchedJobDetail;
       this.jobDetailUpdate.next(this.jobDetail);
     }

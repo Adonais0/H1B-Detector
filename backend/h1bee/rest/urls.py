@@ -3,8 +3,13 @@ from django.conf.urls import url
 from . import views
 from .views import check_token
 from django.conf.urls import include
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='Pastebin API')
 
 urlpatterns = [
+    # url(r'^docs/', docs_view),
+    url(r'^swagger-docs/', schema_view),
     url(r'^city/', views.CityList.as_view()),
     url(r'^location/', views.LocationView.as_view()),
 
