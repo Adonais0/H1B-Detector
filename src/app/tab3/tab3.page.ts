@@ -6,6 +6,8 @@ import {
 import { AuthAPIService } from '../auth.service';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-tab3',
   templateUrl: './tab3.page.html',
@@ -13,6 +15,8 @@ import { Router } from '@angular/router';
 })
 export class Tab3Page implements OnInit {
   public responseData: any;
+  isAuthed: Boolean = false;
+  isAuthedUpdate: Subscription;
 
   requestBody = {
     client_id: 'buWgmy7h5kOeZl2FgvW3tzhDQlsmY0P5FwvjbOre',
@@ -33,7 +37,18 @@ export class Tab3Page implements OnInit {
     private socialAuthService: AuthService,
     public authAPIService: AuthAPIService,
     public user: UserService,
-    private router: Router) { }
+    private router: Router,
+    private authService: AuthAPIService) {
+
+      this.isAuthed = this.authService.getIsAuth();
+      this.isAuthedUpdate = this.authService.getAuthStatusListener().subscribe(
+        status => {
+          this.isAuthed = status;
+          console.log('status changed');
+          console.log(this.isAuthed);
+        }
+      );
+    }
 
   ngOnInit() {
   }
@@ -46,6 +61,13 @@ export class Tab3Page implements OnInit {
       }
     );
   }
+
+  // public logOut() {
+  //   const provider = GoogleLoginProvider.PROVIDER_ID;
+  //   this.socialAuthService.signOut().then(
+  //     this.authAPIService.isAuthenticated = false;
+  //   );
+  // }
 
   public apiConnect(data) {
     console.log('userdata: ' + JSON.stringify(data));

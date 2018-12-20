@@ -50,5 +50,31 @@ export class AuthAPIService {
     );
   }
 
+  // signOut() {
+  //   const headers = new HttpHeaders({
+  //       'Content-Type': 'application/json',
+  //   });
+  //
+  //   return new Promise(
+  //    (resolve, reject) => {
+  //      this.httpClient.post<any>(BACKEND_URL  JSON.stringify(credentials),
+  //      {headers: headers}).subscribe(
+  //        res => {
+  //          console.log('success post the data -auth service');
+  //          const token = res.token;
+  //          this.token = token;
+  //          this.isAuthenticated = true;
+  //          console.log(this.isAuthenticated);
+  //          this.authStatusListener.next(true);
+  //          resolve(res);
+  //        }, (err) => {
+  //          console.log('error posting data -auth service');
+  //          reject(err);
+  //        }
+  //      );
+  //    }
+  //   );
+  // }
+
   constructor(private httpClient: HttpClient, private router: Router) {}
 }
