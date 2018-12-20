@@ -31,7 +31,7 @@ recent year. (see detail in sql data model file)
 - Python 3.7
 - PostgreSQL 10.0
 
-## Postgres SQL
+### Postgres SQL
 - **Install postgreSQL**: `$ brew install postgresql`
 - Mac in terminal **start postgres server**: `$ pg_ctl -D /usr/local/var/postgres start`
 - Wait for the terminal to show `server started`
@@ -49,9 +49,9 @@ recent year. (see detail in sql data model file)
 -  `python3 manage.py runserver`
 
 ### Frontend
-- Run `npm install`
+- In the project root folder (h1bee) run `npm install`
 - Install any packages if the `ionic server` raise package error
-- `ionic serve`
+- Run `$ ionic serve` to start front end
 
 ### pgAdmin
 - (pgAdmin)[https://www.pgadmin.org/] is a GUI interface of postgres
