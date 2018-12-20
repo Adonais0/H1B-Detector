@@ -67,3 +67,12 @@ recent year. (see detail in sql data model file)
   - Expand `Public`
   - Expand `Tables`
 - Then you can see all the database tables
+
+
+# Work Plan
+- [ ] Add CSS and styling pages
+- [ ] Add Login view
+- [ ] Add Logout function (figure out communication between frontend, backend, and the provider)
+- [ ] Adjust post job function, allow users to add companies to the job
+- [ ] (Authorization) After logged in, users can see jobs they posted in the 'me' page
+- [ ] (Authorization & CRUD) In the 'me' page, users can delete or edit the jobs they posted
