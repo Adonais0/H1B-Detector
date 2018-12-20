@@ -18,8 +18,10 @@ urlpatterns = [
 
     url(r'^company/(?P<pk>\d+)/$', views.CompanyDetailView.as_view()),
     url(r'^job/(?P<pk>[\w\-]+)/$', views.JobDetailView.as_view()),
+    url(r'^category/', views.CategoryView.as_view()),
 
     url(r'^user/', views.UserList.as_view()),
+    url(r'^job/create', views.UserList.as_view()),
 
     url(r'^login/', include('rest_social_auth.urls_jwt')),
     url(r'^login/', include('rest_social_auth.urls_token')),

@@ -75,6 +75,16 @@ class JobDetailView(APIView):
     def post(self):
         pass
 
+
+class CategoryView(APIView):
+    def get(self, request):
+        category = JobCategory.objects.all()
+        serializer = JobCategorySerializer(category, many=True)
+        return Response(serializer.data)
+
+    def post(self):
+        pass
+
 # Authentication
 class UserList(generics.ListAPIView):
     def get(self, request):

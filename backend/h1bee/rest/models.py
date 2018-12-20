@@ -84,9 +84,6 @@ class Company(models.Model):
     # def __str__(self):
     #     return self.company
 
-
-
-
 class County(models.Model):
     county_id = models.AutoField(primary_key=True)
     county = models.CharField(max_length=255, blank=True, null=True)

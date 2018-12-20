@@ -29,7 +29,7 @@ export class AppService {
   public jobDetailUpdate: Subject<Position>;
 
   constructor(private httpClient: HttpClient) {
-                this.companies = [];
+    this.companies = [];
     this.jobs = [];
 
     this.companyUpdate = new Subject();

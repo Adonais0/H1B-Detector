@@ -37,10 +37,9 @@ export class AuthAPIService {
            console.log('success post the data -auth service');
            const token = res.token;
            this.token = token;
-           if (token) {
-             this.isAuthenticated = true;
-             this.authStatusListener.next(true);
-           }
+           this.isAuthenticated = true;
+           console.log(this.isAuthenticated);
+           this.authStatusListener.next(true);
            resolve(res);
          }, (err) => {
            console.log('error posting data -auth service');

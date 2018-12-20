@@ -15,6 +15,7 @@ import {
 } from 'angular-6-social-login';
 import { AuthAPIService} from './auth.service';
 import { AppService} from './app.service';
+import { EditService } from './edit/edit.service';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -41,6 +42,7 @@ export function getAuthServiceConfigs() {
     SocialLoginModule
   ],
   providers: [
+    EditService,
     AppService,
     AuthAPIService, {
     provide: AuthServiceConfig,
