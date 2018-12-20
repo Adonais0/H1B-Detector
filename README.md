@@ -19,7 +19,12 @@ The job detail page shows information about the average salary, companies that s
 this job position, job title and job category, work locations, and application numbers in the most
 recent year. (see detail in sql data model file)
 
-![model image](./model.png)
+![model image](https://github.com/Adonais0/H1B-Detector/blob/master/model.png)
+
+### Demo Video
+
+[![Demo](https://img.youtube.com/vi/sLn883H-7OY/0.jpg)](https://www.youtube.com/watch?v=sLn883H-7OY)
+
 
 # Project Setup
 
