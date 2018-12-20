@@ -23,7 +23,7 @@ export class EditPage implements OnInit {
 
   createJob() {
     const body = {
-      'job': this.jobTitle,
+      'job': this.jobTitle.toUpperCase(),
       'job_category': this.jobCategory
     };
     this.editService.postJob(body);

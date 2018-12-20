@@ -32,7 +32,7 @@ export class EditService {
         'Content-Type': 'application/json',
       });
 
-    this.httpClient.post<any>(BACKEND_URL + 'job/create/', content, {headers: headers}).subscribe(
+    this.httpClient.post<any>(BACKEND_URL + 'create/job/', content, {headers: headers}).subscribe(
       (res) => {
         console.log('successfully added the job');
       }, (err) => {

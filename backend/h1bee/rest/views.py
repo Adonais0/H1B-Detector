@@ -103,3 +103,15 @@ def check_token(request, format=None):
     # Test if token exist in database
      token = Token.objects.filter(key = request.data['token']).exists()
      return JsonResponse({"status": token})
+
+# CRUD
+class CreateJobView(APIView):
+    def post(self, request):
+        serializer = JobCreateSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def get(self):
+        pass

@@ -56,6 +56,10 @@ class JobSerializer(serializers.ModelSerializer):
         model = Job
         fields = ('job_id', 'job', 'job_category', 'company_job')
 
+class JobCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Job
+        fields = ('job', 'job_category')
 
 # ============== COMPANY ============= #
 class CompaniesSerializer(serializers.ModelSerializer):

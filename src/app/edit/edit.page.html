@@ -18,7 +18,7 @@
     <ion-item>
       <ion-label>Job Category</ion-label>
       <ion-select placeholder="Select One" [(ngModel)]=jobCategory>
-        <ion-select-option *ngFor="let category of categories" value="category.job_category">{{ category.job_category }}</ion-select-option>
+        <ion-select-option *ngFor="let category of categories" value="{{category.job_category_id}}">{{ category.job_category }}</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>

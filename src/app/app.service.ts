@@ -4,6 +4,7 @@ import { environment } from '../environments/environment';
 import { Location } from '../models/location';
 import { Company } from '../models/company';
 import { Position } from '../models/position';
+import { FavPosition } from '../models/favorite';
 import { Subject } from 'rxjs';
 
 const BACKEND_URL = environment.apiUrl;
@@ -12,6 +13,8 @@ const BACKEND_URL = environment.apiUrl;
   providedIn: 'root'
 })
 export class AppService {
+  private favPositionUpdate: Subject<FavPosition[]>;
+  private favoritePositions: FavPosition[] = [];
 
   public fetchedCompany: any[];
   public fetchedCompanyDetail: any;
@@ -29,6 +32,9 @@ export class AppService {
   public jobDetailUpdate: Subject<Position>;
 
   constructor(private httpClient: HttpClient) {
+    this.favPositionUpdate = new Subject<any>();
+    this.favPositionUpdate.next(this.favoritePositions);
+
     this.companies = [];
     this.jobs = [];
 
@@ -42,10 +48,60 @@ export class AppService {
     this.jobUpdate.next(this.jobs);
     this.companyDetailUpdate.next(this.companyDetail);
     this.jobDetailUpdate.next(this.jobDetail);
+
+    const favorite = JSON.parse(localStorage.getItem('favorite'));
+    if (favorite == null) {
+      this.favoritePositions = [];
+    } else {
+      this.favoritePositions = favorite;
+      this.favPositionUpdate.next(this.favoritePositions);
+    }
   }
 
+  // ================ FAVORITE JOB ================== //
+public getFav() {
+  return this.favoritePositions;
+}
+
+private findFavPosByID(id): FavPosition {
+  for (const p of this.favoritePositions) {
+    if (p.id === id) {
+       return p;
+    }
+  }
+  return undefined;
+}
+
+public addFovoriteJobs(pos: FavPosition) {
+    this.favoritePositions.push(pos);
+    this.favPositionUpdate.next(this.favoritePositions);
+    this.saveFavourite();
+  }
+
+public rmFavorite(pos: FavPosition) {
+  const id = pos.id;
+  for (let i = 0; i < this.favoritePositions.length; i++) {
+    const iID = this.favoritePositions[i].id;
+    if (iID === id) {
+      this.findFavPosByID(id).fav = false;
+      this.favoritePositions.splice(i, 1);
+      break;
+    }
+  }
+  this.favPositionUpdate.next(this.favoritePositions);
+  this.saveFavourite();
+}
+
+public updateFavPosition() {
+  return this.favPositionUpdate.asObservable();
+}
+
+public saveFavourite() {
+  localStorage.setItem('favourite', JSON.stringify(this.favoritePositions));
+  console.log('save to local storage!');
+}
+
   // ================ HTTP REQUEST ================== //
-// ================SEARCH FOR Companies ================== //
 public searchCompany(query: String) {
   this.httpClient.get<any>(BACKEND_URL + 'search/company/' + query + '/').subscribe(
     (fetchedData) => {

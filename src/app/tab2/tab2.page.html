@@ -6,4 +6,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content *ngIf="positions">
+  <ion-item *ngFor="let position of positions">
+    <p>{{ position.positionTitle }}</p>
+    <p>{{ position.company }}</p>
+
+    <ion-row [ngSwitch]= "position.fav" align-items-center justify-content-center no-margin no-padding>
+        <button style="height: 25px" clear icon-only small color="dark" item-end (click)="rmFavorite(position)">
+            <ion-icon *ngSwitchCase="false" name="star-outline"></ion-icon>
+            <ion-icon *ngSwitchCase="true" name="star"></ion-icon>
+        </button>
+    </ion-row>
+  </ion-item>
+</ion-content>

@@ -10,8 +10,8 @@
 <ion-content padding>
   <ion-list *ngIf="positions">
     <ion-item *ngFor="let position of positions" (click)="toDetail(position.id)">
-      <b>{{ position.positionCategory}}</b>
-      <i>{{ position.positionTitle}}</i>
+      <b>{{ position.positionTitle}}</b>
+      <i>{{ position.positionCategory}}</i>
       <p>Salary: {{ position.positionSalary }}</p>
     </ion-item>
   </ion-list>

@@ -21,7 +21,9 @@ urlpatterns = [
     url(r'^category/', views.CategoryView.as_view()),
 
     url(r'^user/', views.UserList.as_view()),
-    url(r'^job/create', views.UserList.as_view()),
+
+    #CRUD URLs
+    url(r'^create/job', views.CreateJobView.as_view()),
 
     url(r'^login/', include('rest_social_auth.urls_jwt')),
     url(r'^login/', include('rest_social_auth.urls_token')),

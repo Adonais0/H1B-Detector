@@ -21,6 +21,12 @@
   <ion-list>
     <ion-item *ngFor="let position of currentCompany.companyPositions">
       <b>{{ position.positionTitle }}</b>
+      <ion-row [ngSwitch]= "position.fav" align-items-center justify-content-center no-margin no-padding>
+            <button style="height: 25px" clear icon-only small color="dark" item-end (click)="addToFavorite(currentCompany.companyName, position)">
+                <ion-icon *ngSwitchCase="false" name="star-outline"></ion-icon>
+                <ion-icon *ngSwitchCase="true" name="star"></ion-icon>
+            </button>
+        </ion-row>
     </ion-item>
   </ion-list>
 </ion-content>
