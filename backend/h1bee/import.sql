@@ -189,3 +189,12 @@ UPDATE company SET location_id = location.location_id
 	FROM h1b
     JOIN location ON h1b.company_location_id = location.location_id
     WHERE h1b.company_city = location.city AND h1b.company_state = location.state AND h1b.company_postal_code = location.postal_code;
+
+// alter primary key to serial number
+CREATE SEQUENCE postal_code_id_seq
+   OWNED BY postal_code.postal_code_id;
+
+ALTER TABLE h1b ADD COLUMN location_id integer;
+UPDATE company_job SET job_id = job_id + 1;
+INSERT INTO postal_code (postal_code) VALUES ('12345')
+ALTER TABLE location ADD CONSTRAINT location_postal_code FOREIGN KEY (postal_code_id) REFERENCES postal_code(postal_code_id)

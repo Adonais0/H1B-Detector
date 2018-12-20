@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // apiUrl: 'https://h1bee.herokuapp.com/api/'
-  apiUrl: 'http://localhost:8000/api/'
+  apiUrl: 'http://localhost:8000/h1bee/api/'
 };
 
 /*

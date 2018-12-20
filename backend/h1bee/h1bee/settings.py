@@ -42,9 +42,16 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest.apps.RestConfig',
     'rest_social_auth',
+    'rest_auth',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'oauth2_provider',
     'social_django',
+    'rest_auth.registration',
+    'rest_framework_swagger',
     'rest_framework_social_oauth2',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -180,3 +187,7 @@ LOGIN_URL = '/auth/login/google-oauth2/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 # DRFSO2_PROPRIETARY_BACKEND_NAME = 'h1bee'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+SITE_ID = 1

@@ -59,7 +59,10 @@ class Job(models.Model):
         db_table = 'job'
 
     def __str__(self):
-        return self.job
+        if isinstance(self.job, str):
+            return self.job
+        else:
+            return ''
 
     # @property
     # def companies(self):
@@ -78,8 +81,8 @@ class Company(models.Model):
         managed = False
         db_table = 'company'
 
-    def __str__(self):
-        return self.company
+    # def __str__(self):
+    #     return self.company
 
 
 
@@ -99,14 +102,16 @@ class County(models.Model):
 
 class JobCategory(models.Model):
     job_category_id =models.AutoField(primary_key=True)
-    job_category = models.CharField(max_length=255, blank=True, null=True)
+    job_category = models.CharField(max_length=255, blank=True, null=False)
 
     class Meta:
         managed = False
         db_table = 'job_category'
 
     def __str__(self):
-        return self.job_category
+        if isinstance(self.job_category, str):
+            return self.job_category
+        return ''
 
 
 class Location(models.Model):

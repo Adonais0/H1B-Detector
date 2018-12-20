@@ -61,8 +61,16 @@ class JobListView(APIView):
 class JobDetailView(APIView):
     def get(self, request, pk):
         job = Job.objects.get(pk=pk)
-        serializer = JobSerializer(job, many=False)
-        return Response(serializer.data)
+        companies = job.company_set.all()
+
+        job_serializer = JobSerializer(job, many=False)
+        companies_serializer = CompaniesSerializer(companies, many=True)
+
+        content = {
+            'position': job_serializer.data,
+            'companies': companies_serializer.data
+        }
+        return Response(content)
 
     def post(self):
         pass

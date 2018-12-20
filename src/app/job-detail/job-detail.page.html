@@ -12,5 +12,14 @@
     <b> {{ position.positionTitle }}</b>
     <p>Category: {{ position.positionCategory }}</p>
     <p>Salary: {{ position.positionSalary }}</p>
+
+    <ion-list>
+      <ion-item *ngFor="let company of position.positionCompanies">
+        <b>{{company.company}}</b>
+        <p slot="end">{{company.location.city_id.city}} | {{ company.location.state_id.state}}</p>
+      </ion-item>
+    </ion-list>
   </ion-card>
+
+
 </ion-content>

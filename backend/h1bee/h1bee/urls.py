@@ -23,8 +23,10 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include('rest.urls')),
+    url(r'^h1bee/api/', include('rest.urls')),
     url(r'^auth/', include('rest_framework_social_oauth2.urls')),
+    url(r'^h1bee/api/rest-auth/', include('rest_auth.urls')),
+    url(r'^h1bee/api/rest-auth/registration/', include('rest_auth.registration.urls'))
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
