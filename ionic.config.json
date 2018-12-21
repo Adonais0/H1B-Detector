@@ -1,0 +1,7 @@
+{
+  "name": "h1bee",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
