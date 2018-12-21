@@ -54,7 +54,7 @@ recent year. (see detail in sql data model file)
 -  `python3 manage.py runserver`
 
 ### Frontend
-- Make sure nodejs and `npm` are installed on your machine by checking `npm -v`, `node -v`
+- Make sure `node` and `npm` are installed on your machine by checking `npm -v`, `node -v`. If not installed, run `$ brew install node`
 - Install Ionic CLI `npm install -g ionic@latest`
 - In the project root folder (h1bee) run `npm install`
 - Install any packages if the `ionic server` raise package error
